@@ -1,2 +1,4 @@
-# moneymanagementfront
-CMPSC 483, Capstone Capital One Money Management Project Front-End
+# Money Management Frontend
+
+# Description
+Frontend of capstone project Capital One Money Management. 
