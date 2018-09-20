@@ -2,7 +2,7 @@
   <div class="wrapper-page">
     <div class="page-title-box d-xl-none"></div>
     <div class="text-center">
-      <p class="logo-lg"><span> Login to Gullin</span></p>
+      <p class="logo-lg"><span>Login</span></p>
     </div>
     <div class="card-box" v-if="!login_success">
       <div class="form-horizontal m-t-20">

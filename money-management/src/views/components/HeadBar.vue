@@ -13,8 +13,10 @@
           <!--</router-link>-->
           <!-- Image Logo -->
           <router-link :to="{name:'dashboard'}" class="logo">
-              <img src="/static/images/gullin_logo.png" alt="" height="24" class="logo-large">
-              <img src="/static/images/gullin_logo.png" alt="" height="24" class="logo-small">
+              <!-- <img src="/static/images/gullin_logo.png" alt="" height="24" class="logo-large">
+              <img src="/static/images/gullin_logo.png" alt="" height="24" class="logo-small"> -->
+               <i class="logo-large">Capital One</i>
+              <i class="logo-small">Capital One</i>
           </router-link>
         </div>
         <!-- End Logo container-->
