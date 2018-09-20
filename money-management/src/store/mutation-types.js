@@ -1,0 +1,21 @@
+// ------- ACCOUNT --------
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAILED = 'LOGIN_FAILED'
+export const LOGIN_2FACTOR_SUCCESS = 'LOGIN_2FACTOR_SUCCESS'
+
+export const LOGOUT = 'LOGOUT'
+
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_FAILED = 'REGISTER_FAILED'
+
+export const REFRESH_SUCCESS = 'REFRESH_SUCCESS'
+export const REFRESH_FAILED = 'REFRESH_FAILED'
+
+export const LOAD_ME = 'LOAD_ME'
+export const UPDATE_ME = 'UPDATE_ME'
+
+export const LOAD_LOG = 'LOAD_LOG'
+
+// ----- TRANSACTION -----
+export const GET_TRANSACTION = 'GET_TRANSACTION'
+export const LIST_TRANSACTIONS = 'LIST_TRANSACTIONS'
