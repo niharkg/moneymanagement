@@ -133,9 +133,6 @@ export default {
     if (this.$route.query.from) {
       this.refer_source = this.$route.query.from;
     }
-    if (this.$route.name === "url_for_luke") {
-      this.refer_source = "Luke";
-    }
   }
 };
 </script>

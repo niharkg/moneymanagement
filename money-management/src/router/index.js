@@ -5,8 +5,11 @@ import store from '../store/index.js'
 import UserLoginView from '../views/main_pages/user_auth/UserLogin.vue'
 import UserSignUpView from '../views/main_pages/user_auth/UserSignUp.vue'
 import UserForgetPasswordView from '../views/main_pages/user_auth/ForgetPassword.vue'
+
 import DashboardView from '../views/main_pages/dashboard/Dashboard.vue'
 import SettingsView from '../views/main_pages/settings/Settings.vue'
+import TransactionsView from '../views/main_pages/transactions/Transactions.vue'
+
 
 // Error Pages
 import NotFoundView from '../views/error_pages/404.vue'
@@ -59,6 +62,11 @@ export default new Router({
     path: '/',
     component: DashboardView,
     name: 'dashboard',
+    beforeEnter: isAuthenticated,
+  }, {
+    path: '/transactions',
+    component: TransactionsView,
+    name: 'transactions',
     beforeEnter: isAuthenticated,
   }, {
     path: '/settings',

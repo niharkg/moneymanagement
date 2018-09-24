@@ -24,7 +24,7 @@
           <ul class="list-inline float-right mb-0">
             <li class="menu-item list-inline-item">
               <!-- Mobile menu toggle-->
-              <a class="navbar-toggle nav-link" v-show="$route.name!=='user_signup_followup'">
+              <a class="navbar-toggle nav-link">
                 <div class="lines">
                   <span></span>
                   <span></span>
@@ -40,16 +40,11 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                 <!-- item-->
-                <router-link :to="{name:'settings'}" class="dropdown-item notify-item" v-show="$route.name!=='user_signup_followup'">
+                <router-link :to="{name:'settings'}" class="dropdown-item notify-item">
                   <i class="mdi mdi-account-star-variant"></i>
-                  <span>My Profile</span>
+                  <span>Settings</span>
                 </router-link>
-                <!-- item-->
-                <router-link :to="{name:'settings_verification'}" class="dropdown-item notify-item" v-show="$route.name!=='user_signup_followup'">
-                  <i class="mdi mdi-verified"></i>
-                  <span>Verification</span>
-                </router-link>
-                <a href="http://help.gullin.io" target="_blank" class="dropdown-item notify-item">
+                <a href="https://www.capitalone.com/" target="_blank" class="dropdown-item notify-item">
                   <i class="mdi mdi-comment-question-outline"></i>
                   <span>FAQ</span>
                 </a>
@@ -84,7 +79,7 @@
       <!-- end container -->
     </div>
     <!-- end topbar-main -->
-    <div class="navbar-custom" v-if="is_login&&$route.name!=='user_signup_followup'">
+    <div class="navbar-custom" v-if="is_login">
       <div class="container-fluid">
         <div id="navigation">
           <!-- Navigation Menu-->
@@ -94,15 +89,9 @@
                 <i class="ti-home"></i>Dashboard
               </router-link>
             </li>
-            <li class="has-submenu" :class="{active: $route.name === 'token_sale_list' || $route.name === 'token_sale_detail'}">
+            <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
               <router-link :to="{name:'token_sale_list'}">
-                <i class="ti-star"></i>Buy Tokens
-              </router-link>
-            </li>
-
-            <li class="has-submenu" :class="{active: $route.name === 'wallet'}">
-              <router-link :to="{name:'wallet'}">
-                <i class="ti-wallet"></i>My Wallet
+                <i class="ti-star"></i>My Transactoins
               </router-link>
             </li>
 

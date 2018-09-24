@@ -6,15 +6,15 @@
     </div>
     <div class="card-box" v-if="step===1">
       <div class="alert alert-success">
-        Please input your phone number or email.
+        Please input your account email.
       </div>
       <div class="form-horizontal m-t-20">
         <div class="form-group row">
 
           <div class="col-12">
             <div class="input-group">
-              <span class="input-group-addon"><i class="mdi mdi-cellphone-iphone"></i> / <i class="mdi mdi-email"></i></span>
-              <input class="form-control" v-model="email_or_phone" placeholder="Phone / Email">
+              <span class="input-group-addon"><i class="mdi mdi-email"></i></span>
+              <input class="form-control" v-model="email_or_phone" placeholder="Email">
             </div>
           </div>
         </div>

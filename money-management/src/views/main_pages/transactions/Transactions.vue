@@ -33,8 +33,7 @@
                 <h4>Your ETH Wallet Address</h4>
                 <p style="word-wrap: break-word;" class="mt-3">{{me_wallet.eth_address}}</p>
                 <hr>
-                <h4>Your ETH Wallet in QR Code</h4>
-                <qrcode :value="me_wallet.eth_address" :options="{ size: 150 }"/>
+
                 <hr>
                 <!--<a-->
                 <!--:href="'https://buy.coinbase.com?code=95f65a41-4643-58a4-8eb2-fda57ada4392&address=' + me_wallet.eth_address +'&prefill_email='+me.user.email+ '&redirect_uri=https://app.gullin.io/wallet'"-->
@@ -179,13 +178,9 @@
 <script>
 import { mapGetters } from "vuex";
 
-import { web3 } from "../../../utils.js";
-
 export default {
-  name: "Wallet",
-  components: {
-    qrcode
-  },
+  name: "Transactions",
+
   data() {
     return {
       amount: "",
