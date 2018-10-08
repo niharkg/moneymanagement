@@ -8,7 +8,7 @@ const apiCall = (method, url, form_data, params) => {
     url: url,
     data: form_data,
     params: params,
-    baseURL: API_ROOT + '/wallet/',
+    baseURL: API_ROOT + '/transactions/',
     withCredentials: true,
   })
     .then(response => Promise.resolve(response.data))
@@ -32,13 +32,12 @@ const apiCall = (method, url, form_data, params) => {
 }
 
 export default {
-  getWallet() {
-    return apiCall('get', '')
+  // Get all of a user's transactions
+  //  TODO: change user_id to active user when supported
+  getRecentTransactions() {
+    return apiCall('get', 'get/137985/amount/10/')
   },
-  syncBalance(form_data) {
-    return apiCall('post', 'balance/', form_data)
-  },
-  syncTransaction(form_data) {
-    return apiCall('post', 'transaction/', form_data)
+  getCurrentMonthCategorySpending(month, year) {
+    return apiCall('get', 'get/categories/137985/'+ month + '/' + year + '/')
   },
 }

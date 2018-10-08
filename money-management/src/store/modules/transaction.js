@@ -18,14 +18,22 @@ const getters = {
 }
 
 const actions = {
-  listTransactions({ commit }) {
-    return transactionApi.getWallet()
-      .then((response) => {
-        commit(types.LIST_TRANSACTIONS, response)
-        return Promise.resolve(response)
-      })
-      .catch((error) => Promise.reject(error))
-  },
+  // Get all of  a user's transactions
+  getRecentTransactions({ commit }) {
+    return transactionApi.getRecentTransactions()
+    .then((response) => {
+      return (response)
+    })
+    .catch((error) => Promise.reject(error))
+  }, 
+  // Get all of  a user's transactions
+  getCurrentMonthCategorySpendings({ commit },params) {
+    return transactionApi.getCurrentMonthCategorySpending(params.month, params.year)
+    .then((response) => {
+      return (response)
+    })
+    .catch((error) => Promise.reject(error))
+  }, 
 }
 
 const mutations = {

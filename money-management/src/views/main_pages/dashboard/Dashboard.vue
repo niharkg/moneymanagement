@@ -12,7 +12,6 @@
         </div>
       </div>
       <!-- end page title end breadcrumb -->
-
       <div class="row">
         <div class="col-sm-12">
           <div class="alert alert-success alert-dismissable">
@@ -35,12 +34,12 @@
         </div>
         <div class="col-lg-4">
           <div class="card-box">
-            <h4 class="text-dark header-title m-t-0 m-b-30">Spending Categories
+            <h4 class="text-dark header-title m-t-0 m-b-30">Spending This Month
               <div class="pull-right">
                 <router-link :to="{name:'transactions'}" class="text-primary">See All</router-link>
               </div>
             </h4>
-            Pie Chart Here
+            <canvas id="category-chart"></canvas>
           </div>
         </div>
       </div>
@@ -59,26 +58,33 @@
             <table class="table">
               <thead>
               <tr>
+                <th>Date</th>
+                <th>Time</th>
                 <th>Amount</th>
                 <th>Category</th>
                 <th>Payment Method</th>
+                <th>Vendor</th>
                 <th>Location</th>
-                <th>Time</th>
               </tr>
               </thead>
               <tbody>
-              <tr v-for="(tx, index) in transactions" v-if="index<5">
-                <td>{{tx.type}}</td>
+              <!-- User Transactions Concise Table -->
+              <tr v-for="(tx, index) in transactions" v-if="index<10">
+                <td>{{tx.sale_date.slice(0, 10)}}</td>
+                <td>{{tx.sale_date.slice(11, 16)}}</td>
+                <td>${{tx.amount.toFixed(2)}}</td>
                 <td>{{tx.category}}</td>
                 <td>{{tx.payment_method}}</td>
-                <td>{{tx.location}}</td>
-                <td v-html="timeFromNow(tx.time)"></td>
+                <td>{{tx.location.vendor_name}}</td>
+                <td>{{tx.location.city}}, {{tx.location.state}}</td>
               </tr>
               </tbody>
             </table>
             <div v-if="!transactions" class="text-center">
               <p>You have no transactions.</p>
-              <a class="btn btn-primary" href="https://www.capitalone.com/" target="_blank">Explore</a>
+              <button class="btn btn-primary">
+                Explore
+              </button>
             </div>
           </div>
         </div>
@@ -108,12 +114,16 @@
 
 <script>
 import { mapGetters } from "vuex";
+// import Chart from 'chart.js'
 
 export default {
   name: "Dashboard",
   data() {
     return {
-      eth_market_data: {}
+      transactions: {},
+      categorySpendings: {},
+      categories: [],
+      categorySpendings: []
     };
   },
   computed: {
@@ -137,12 +147,70 @@ export default {
         if (hour === -1) hour += 24;
       }
       return list_hours;
+    },
+    // Retrieve all of a user's transactions
+    getRecentTransactions() {
+      this.$store.dispatch("getRecentTransactions").then(result => {
+        this.transactions = result
+      });
+    },
+    getCurrentMonthCategorySpendings(month, year) {
+      let params = {}
+      params.month = month
+      params.year = year
+      this.$store.dispatch("getCurrentMonthCategorySpendings", params).then(result => {
+        this.categorySpendings = result;
+        let months = Object.keys(this.categorySpendings)
+        this.categories = Object.keys(this.categorySpendings[months[0]])
+        let spendings = []
+        for (let category of this.categories) {
+          spendings.push(this.categorySpendings[months[0]][category].toFixed(2))
+        }
+        this.categorySpendings = spendings;
+        this.createDonutChart("category-chart")
+      });
+    },
+    // Create the donut category chart
+    createDonutChart(chartId) {
+      console.log(this.categorySpendings)
+      const ctx = document.getElementById(chartId);
+      const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: this.categories,
+          datasets: [
+            {
+              backgroundColor: ["#FE0000", "#017DD7","#2DCB76","#FFEC02","#9D46C9", "#63B5D3", "#4FDA22","#FE7F16","#809BE5","#26D7AD"],
+              data: this.categorySpendings,
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: false,
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
     }
   },
-  created() {},
-  mounted() {}
+  // Call these functions before the page loads (mounts)
+  beforeMount(){
+    var d = new Date();
+    // TODO: Fix month (User data not in October yet)
+    this.getCurrentMonthCategorySpendings(d.getMonth() - 1, d.getFullYear())
+    this.getRecentTransactions();
+  },
+  created() {
+    
+  },
+  mounted() {
+  }
 };
 </script>
+
 <style scoped>
 .card-box-no-outline {
   padding: 20px;
