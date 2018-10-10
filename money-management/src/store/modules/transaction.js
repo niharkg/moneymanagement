@@ -19,8 +19,9 @@ const getters = {
 
 const actions = {
   // Get all of  a user's transactions
-  getRecentTransactions({ commit }) {
-    return transactionApi.getRecentTransactions()
+  getRecentTransactions({ commit }, params) {
+    console.log("here")
+    return transactionApi.getRecentTransactions(params.user_id, params.amount)
     .then((response) => {
       return (response)
     })
@@ -28,7 +29,8 @@ const actions = {
   }, 
   // Get all of  a user's transactions
   getCurrentMonthCategorySpendings({ commit },params) {
-    return transactionApi.getCurrentMonthCategorySpending(params.month, params.year)
+    console.log(params)
+    return transactionApi.getCurrentMonthCategorySpending(params.user_id, params.month, params.year)
     .then((response) => {
       return (response)
     })
