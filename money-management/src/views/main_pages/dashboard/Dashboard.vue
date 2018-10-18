@@ -149,13 +149,19 @@ export default {
       return list_hours;
     },
     // Retrieve all of a user's transactions
-    getRecentTransactions() {
-      this.$store.dispatch("getRecentTransactions").then(result => {
+    getRecentTransactions(user_id, amount) {
+      console.log("======================================")
+      let params = {}
+      params.user_id = this.me.user_id
+      params.amount = 10
+      console.log(params)
+      this.$store.dispatch("getRecentTransactions", params).then(result => {
         this.transactions = result
       });
     },
     getCurrentMonthCategorySpendings(month, year) {
       let params = {}
+      params.user_id = this.me.user_id
       params.month = month
       params.year = year
       this.$store.dispatch("getCurrentMonthCategorySpendings", params).then(result => {
@@ -207,7 +213,7 @@ export default {
     
   },
   mounted() {
-  }
+  },
 };
 </script>
 

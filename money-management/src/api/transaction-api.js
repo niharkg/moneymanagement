@@ -34,10 +34,11 @@ const apiCall = (method, url, form_data, params) => {
 export default {
   // Get all of a user's transactions
   //  TODO: change user_id to active user when supported
-  getRecentTransactions() {
-    return apiCall('get', 'get/137985/amount/10/')
+  getRecentTransactions(user_id, amount) {
+    return apiCall('get', 'get/' + user_id + '/amount/' + amount + '/')
   },
-  getCurrentMonthCategorySpending(month, year) {
-    return apiCall('get', 'get/categories/137985/'+ month + '/' + year + '/')
+  getCurrentMonthCategorySpending(user_id, month, year) {
+    console.log(user_id)
+    return apiCall('get', 'get/categories/' + user_id + '/'+ month + '/' + year + '/')
   },
 }
