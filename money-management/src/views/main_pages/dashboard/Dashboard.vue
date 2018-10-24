@@ -14,9 +14,9 @@
       <!-- end page title end breadcrumb -->
       <div class="row">
         <div class="col-sm-12">
-          <div class="alert alert-success alert-dismissable">
+          <div id="spending_alert" >
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            Welcome to Capital One Money Management App!
+            {{ this.alertText }}
           </div>
         </div>
       </div>
@@ -26,9 +26,9 @@
             <h4 class="text-dark  header-title m-t-0 m-b-30">Monthly Spending</h4>
             <div class="widget-chart text-center">
               <div style="min-width: 200px; min-height: 200px;">
-
+                <canvas style="width: 100%; height: 250px;" id="monthly-chart"></canvas>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
                 <router-link :to="{name:'transactions'}" class="text-primary">See All</router-link>
               </div>
             </h4>
-            <canvas id="category-chart"></canvas>
+            <canvas style="width: 100%; height: 250px;" id="category-chart"></canvas>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
 
       <div class="row">
         <div class="col-lg-8">
-          <div class="card-box">
+          <div class="card-box" style="height:400px;">
             <h4 class="text-dark header-title m-b-30">
               <div class="pull-right">
                 <router-link :to="{name:'transactions'}" class="text-primary">See All</router-link>
@@ -90,13 +90,37 @@
         </div>
         <!-- end col -8 -->
         <div class="col-lg-4">
-          <div class="card-box">
+          <div class="card-box" style="height:400px;">
             <h4 class="text-dark header-title">Tips</h4>
             <div class="inbox-widget">
-              <a href="https://www.capitalone.com/" target="_blank">
+              <a href="https://creditwise.capitalone.com/home" target="_blank">
                 <div class="inbox-item">
-                  <p class="inbox-item-author">100 Ways to Save Money</p>
-                  <p class="inbox-item-text">100 Ways to Save Money <span class="pull-right">{{timeFromNow(1)}}</span></p>
+                  <p class="inbox-item-author">CreditWise</p>
+                  <p class="inbox-item-text">Monitor your credit. For free. <span class="pull-right"></span></p>
+                </div>
+              </a>
+              <a href="https://www.capitalone.com/credit-cards/savor-dining-rewards/" target="_blank">
+                <div class="inbox-item">
+                  <p class="inbox-item-author">Savor® Cash Back Rewards</p>
+                  <p class="inbox-item-text">Earn unlimited 4% cash back on dining and entertainment. <span class="pull-right"></span></p>
+                </div>
+              </a>
+              <a href="https://creditwise.capitalone.com/home" target="_blank">
+                <div class="inbox-item">
+                  <p class="inbox-item-author">Expect more with 360 Money Market®</p>
+                  <p class="inbox-item-text">Grab one of the nation's top savings rates with this fee-free, online and mobile account. <span class="pull-right"></span></p>
+                </div>
+              </a>
+              <a href="https://creditwise.capitalone.com/home" target="_blank">
+                <div class="inbox-item">
+                  <p class="inbox-item-author">See If You're Pre-Qualified</p>
+                  <p class="inbox-item-text">Are you eligible for pre-qualified credit card offers? There's no impact to your credit score to find out now.. <span class="pull-right"></span></p>
+                </div>
+              </a>
+              <a href="https://creditwise.capitalone.com/home" target="_blank">
+                <div class="inbox-item">
+                  <p class="inbox-item-author">Auto Navigator</p>
+                  <p class="inbox-item-text">Find your perfect car, and get pre-qualified for financing—all with no impact to your credit score. <span class="pull-right"></span></p>
                 </div>
               </a>
             </div>
@@ -106,7 +130,6 @@
 
       </div>
       <!-- end row -->
-
     </div>
     <!-- end container -->
   </div>
@@ -123,7 +146,9 @@ export default {
       transactions: {},
       categorySpendings: {},
       categories: [],
-      categorySpendings: []
+      categorySpendings: [],
+      alertType: "",
+      alertText: "",
     };
   },
   computed: {
@@ -136,6 +161,7 @@ export default {
     timeFromNow(time) {
       return moment(time).fromNow();
     },
+    // Generate labels for transactions?
     generateLabels() {
       const list_hours = [];
       const d = new Date();
@@ -153,6 +179,16 @@ export default {
         this.transactions = response;
       });
     },
+    getRecentTransactions(user_id, amount) {
+      let params = {}
+      params.user_id = this.me.user_id
+      params.amount = 5
+      console.log(params)
+      this.$store.dispatch("getRecentTransactions", params).then(result => {
+        this.transactions = result
+      });
+    },
+    // Get the category breakdown spending for the current month
     getCurrentMonthCategorySpendings(month, year) {
       let params = {
         month: month,
@@ -210,15 +246,102 @@ export default {
           }
         }
       });
+    },
+    // Get colors for the bars in the bar chart (leveraging spending)
+    getBarColors(spendings) {
+      let threshold = 0.03
+      let bad = "#D22F2F"
+      let ok = "#004879"
+      let good = "#2DCB76"
+      let total = 0
+      let active_months = 0
+      for(let spending of spendings) {
+        if(spending != null) {
+          total += spending
+          active_months += 1
+        }
+      }
+      let avg = total / active_months
+      this.sendSpendingAlert(avg, threshold, spendings[spendings.length - 1])
+      let colors = []
+      for (let spending of spendings) {
+        if (spending >= avg + avg*threshold){
+          colors.push(bad)
+        }
+        else if (spending <= avg - avg*threshold) {
+          colors.push(good)
+        }
+        else {
+          colors.push(ok)
+        }
+      }
+      return colors
+    },
+    // Alert the user of current spending
+    sendSpendingAlert(avg, threshold, month_spending) {
+      const ctx = document.getElementById("spending_alert");
+      if (month_spending == null)
+        month_spending = 0
+      month_spending = month_spending.toFixed(2)
+      let percent_diff = Math.abs(((avg - month_spending) / avg) * 100).toFixed(1)
+      if (month_spending >= avg + avg*threshold){
+        this.alertType = "danger"
+        this.alertText = "Uh-oh, you're spending more than usual this month. Your spending is $" + month_spending + ". This is " + percent_diff + "% higher than usual."
+        ctx.className = "alert alert-danger alert-dismissable"
+      }
+      else if (month_spending <= avg - avg*threshold) {
+        this.alertType = "success"
+        this.alertText = "You're doing great this month! Your spending is $" + month_spending + ". This is " + percent_diff + "% lower than usual."
+        ctx.className = "alert alert-success alert-dismissable"
+      }
+      else {
+        this.alertType = "info"
+        this.alertText = "Your spending is right on track this month! Your spending is $" + month_spending +". This is " + percent_diff + "% different than usual."
+        ctx.className = "alert alert-info alert-dismissable"
+      }
+    },
+    // Create the bar monthly spending chart
+    createBarChart(chartId, months, spendings) {
+      let colors = this.getBarColors(spendings);
+      const ctx = document.getElementById(chartId);
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: months,
+          datasets: [
+            {
+              backgroundColor: colors,
+              data: spendings,
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: false,
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    },
+    // Get the user's total spending for the last year
+    getLastYearMonthlySpending() {
+      this.$store.dispatch("getLastYearMonthlySpending", this.me.user_id).then(result => {
+        let months = result[0]
+        let spendings = result[1]
+        this.createBarChart("monthly-chart", months, spendings)
+      });
     }
   },
   // Call these functions before the page loads (mounts)
   beforeMount() {
     var d = new Date();
     // TODO: Fix month (User data not in October yet)
-    this.getCurrentMonthCategorySpendings(d.getMonth() - 1, d.getFullYear());
-    this.getTransactoinsByPage();
-  }
+    this.getCurrentMonthCategorySpendings(d.getMonth() - 1, d.getFullYear())
+    this.getRecentTransactions();
+    this.getLastYearMonthlySpending();
+  },
 };
 </script>
 
