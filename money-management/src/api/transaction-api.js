@@ -35,10 +35,20 @@ export default {
   // Get all of a user's transactions
   //  TODO: change user_id to active user when supported
   getRecentTransactions(user_id, amount) {
-    return apiCall('get', 'get/' + user_id + '/amount/' + amount + '/')
+      return apiCall('get', 'get/' + user_id + '/amount/' + amount + '/')
   },
   getCurrentMonthCategorySpending(user_id, month, year) {
-    console.log(user_id)
-    return apiCall('get', 'get/categories/' + user_id + '/'+ month + '/' + year + '/')
+      return apiCall('get', 'get/categories/' + user_id + '/'+ month + '/' + year + '/')
   },
+  getCategoryPredictions(user_id, category) {
+      // Fix issue with Gas/Automotive URL
+      category = category.replace("/", "_");
+      return apiCall('get', 'get/ml/' + user_id + '/'+ category + '/')
+  },
+  getUserCategories(user_id) {
+      return apiCall('get', 'unique_categories/' + user_id + '/')
+  },
+  getLastYearMonthlySpending(user_id) {
+      return apiCall('get', 'monthly_spendings/' + user_id + '/')
+  }
 }

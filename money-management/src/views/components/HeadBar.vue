@@ -91,7 +91,12 @@
             </li>
             <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
               <router-link :to="{name:'token_sale_list'}">
-                <i class="ti-star"></i>My Transactoins
+                <i class="ti-star"></i>My Transactions
+              </router-link>
+            </li>
+            <li class="has-submenu" :class="{active: $route.name === 'predictions'}">
+              <router-link :to="{name:'predictions'}">
+                <i class="ti-star"></i>Predictions
               </router-link>
             </li>
 
