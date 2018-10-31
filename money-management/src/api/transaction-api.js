@@ -59,5 +59,8 @@ export default {
   },
   getLastYearMonthlySpending(user_id) {
       return apiCall('get', 'monthly_spendings/' + user_id + '/')
-  }
+  },
+  getAllModels(user_id) {
+    return apiCall('get', 'ml_model/' + user_id + '/')
+  },
 }
