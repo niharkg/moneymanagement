@@ -35,10 +35,17 @@ export default {
   // Get all of a user's transactions
   //  TODO: change user_id to active user when supported
   getRecentTransactions(user_id, amount) {
-    return apiCall('get', 'get/' + user_id + '/amount/' + amount + '/')
+    return apiCall('get', user_id + '/amount/' + amount + '/')
   },
-  getCurrentMonthCategorySpending(user_id, month, year) {
-    console.log(user_id)
-    return apiCall('get', 'get/categories/' + user_id + '/'+ month + '/' + year + '/')
+  getCurrentMonthCategorySpending(month, year) {
+    return apiCall('get', 'categories/' + month + '/' + year + '/')
+  },
+
+
+  getTransactoinsByPage(query) {
+    return apiCall('get', 'page/' + query.page + '/', null, query)
+  },
+  getAllTransactoins() {
+    return apiCall('get', 'all/')
   },
 }

@@ -69,7 +69,7 @@
               </thead>
               <tbody>
               <!-- User Transactions Concise Table -->
-              <tr v-for="(tx, index) in transactions" v-if="index<10">
+              <tr v-for="(tx, index) in transactions" v-if="index<8">
                 <td>{{tx.sale_date.slice(0, 10)}}</td>
                 <td>{{tx.sale_date.slice(11, 16)}}</td>
                 <td>${{tx.amount.toFixed(2)}}</td>
@@ -129,8 +129,7 @@ export default {
   computed: {
     ...mapGetters({
       is_login: "is_login",
-      me: "me",
-      transactions: "transactions"
+      me: "me"
     })
   },
   methods: {
@@ -149,71 +148,77 @@ export default {
       return list_hours;
     },
     // Retrieve all of a user's transactions
-    getRecentTransactions(user_id, amount) {
-      console.log("======================================")
-      let params = {}
-      params.user_id = this.me.user_id
-      params.amount = 10
-      console.log(params)
-      this.$store.dispatch("getRecentTransactions", params).then(result => {
-        this.transactions = result
+    getTransactoinsByPage() {
+      this.$store.dispatch("getTransactoinsByPage", 1).then(response => {
+        this.transactions = response;
       });
     },
     getCurrentMonthCategorySpendings(month, year) {
-      let params = {}
-      params.user_id = this.me.user_id
-      params.month = month
-      params.year = year
-      this.$store.dispatch("getCurrentMonthCategorySpendings", params).then(result => {
-        this.categorySpendings = result;
-        let months = Object.keys(this.categorySpendings)
-        this.categories = Object.keys(this.categorySpendings[months[0]])
-        let spendings = []
-        for (let category of this.categories) {
-          spendings.push(this.categorySpendings[months[0]][category].toFixed(2))
-        }
-        this.categorySpendings = spendings;
-        this.createDonutChart("category-chart")
-      });
+      let params = {
+        month: month,
+        year: year
+      };
+
+      this.$store
+        .dispatch("getCurrentMonthCategorySpendings", params)
+        .then(result => {
+          this.categorySpendings = result;
+          let months = Object.keys(this.categorySpendings);
+          this.categories = Object.keys(this.categorySpendings[months[0]]);
+          let spendings = [];
+          for (let category of this.categories) {
+            spendings.push(
+              this.categorySpendings[months[0]][category].toFixed(2)
+            );
+          }
+          this.categorySpendings = spendings;
+          this.createDonutChart("category-chart");
+        });
     },
     // Create the donut category chart
     createDonutChart(chartId) {
-      console.log(this.categorySpendings)
+      console.log(this.categorySpendings);
       const ctx = document.getElementById(chartId);
       const myChart = new Chart(ctx, {
-        type: 'doughnut',
+        type: "doughnut",
         data: {
           labels: this.categories,
           datasets: [
             {
-              backgroundColor: ["#FE0000", "#017DD7","#2DCB76","#FFEC02","#9D46C9", "#63B5D3", "#4FDA22","#FE7F16","#809BE5","#26D7AD"],
-              data: this.categorySpendings,
+              backgroundColor: [
+                "#FE0000",
+                "#017DD7",
+                "#2DCB76",
+                "#FFEC02",
+                "#9D46C9",
+                "#63B5D3",
+                "#4FDA22",
+                "#FE7F16",
+                "#809BE5",
+                "#26D7AD"
+              ],
+              data: this.categorySpendings
             }
           ]
         },
         options: {
           title: {
-            display: false,
+            display: false
           },
           legend: {
-            display: false,
+            display: false
           }
         }
       });
     }
   },
   // Call these functions before the page loads (mounts)
-  beforeMount(){
+  beforeMount() {
     var d = new Date();
     // TODO: Fix month (User data not in October yet)
-    this.getCurrentMonthCategorySpendings(d.getMonth() - 1, d.getFullYear())
-    this.getRecentTransactions();
-  },
-  created() {
-    
-  },
-  mounted() {
-  },
+    this.getCurrentMonthCategorySpendings(d.getMonth() - 1, d.getFullYear());
+    this.getTransactoinsByPage();
+  }
 };
 </script>
 
