@@ -37,8 +37,8 @@ const actions = {
       .catch((error) => Promise.reject(error))
   },
 
-  getTransactoinsByPage({ commit }, page_id) {
-    return transactionApi.getTransactoinsByPage(page_id)
+  getTransactoinsByPage({ commit }, query) {
+    return transactionApi.getTransactoinsByPage(query)
       .then((response) => {
         return Promise.resolve(response)
       })

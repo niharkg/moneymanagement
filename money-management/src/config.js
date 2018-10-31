@@ -1,4 +1,4 @@
-export const API_ROOT = (process.env.NODE_ENV === 'production') ? 'https://api.gullin.io' : 'http://localhost:8000'
+export const API_ROOT = (process.env.NODE_ENV === 'production') ? 'http://ec2-18-191-1-125.us-east-2.compute.amazonaws.com' : 'http://localhost:8000'
 
 export const VeeValidateConfig = {
   errorBagName: 'errors',
