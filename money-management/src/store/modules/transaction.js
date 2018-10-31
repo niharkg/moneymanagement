@@ -44,6 +44,48 @@ const actions = {
       })
       .catch((error) => Promise.reject(error))
   },
+  // Get all of  a user's transactions
+  // getCurrentMonthCategorySpendings({ commit },params) {
+  //   return transactionApi.getCurrentMonthCategorySpending(params.user_id, params.month, params.year)
+  //   .then((response) => {
+  //     return (response)
+  //   })
+  //   .catch((error) => Promise.reject(error))
+  // },
+  // Get all of  a user's transactions
+  getCategoryPredictions({ commit },params) {
+    return transactionApi.getCategoryPredictions(params.user_id, params.category)
+    .then((response) => {
+      return (response)
+    })
+    .catch((error) => Promise.reject(error))
+  },
+  // Get all of  a user's transaction categories
+  getUserCategories({ commit }, user_id) {
+    console.log(user_id)
+    return transactionApi.getUserCategories(user_id)
+    .then((response) => {
+      return (response)
+    })
+    .catch((error) => Promise.reject(error))
+  },
+  // Get monthly spending breakdown for last year
+  getLastYearMonthlySpending({ commit }, user_id) {
+    console.log(user_id)
+    return transactionApi.getLastYearMonthlySpending(user_id)
+    .then((response) => {
+      return (response)
+    })
+    .catch((error) => Promise.reject(error))
+  },
+  getAllModels({ commit }, user_id) {
+    return transactionApi.getAllModels(user_id)
+    .then((response) => {
+      return (response)
+    })
+    .catch((error) => Promise.reject(error))
+  },
+
 }
 
 const mutations = {

@@ -40,12 +40,27 @@ export default {
   getCurrentMonthCategorySpending(month, year) {
     return apiCall('get', 'categories/' + month + '/' + year + '/')
   },
-
-
   getTransactoinsByPage(query) {
     return apiCall('get', 'page/' + query.page + '/', null, query)
   },
   getAllTransactoins() {
     return apiCall('get', 'all/')
+  },
+  // getCurrentMonthCategorySpending(user_id, month, year) {
+  //     return apiCall('get', 'get/categories/' + user_id + '/'+ month + '/' + year + '/')
+  // },
+  getCategoryPredictions(user_id, category) {
+      // Fix issue with Gas/Automotive URL
+      category = category.replace("/", "_");
+      return apiCall('get', 'get/ml/' + user_id + '/'+ category + '/')
+  },
+  getUserCategories(user_id) {
+      return apiCall('get', 'unique_categories/' + user_id + '/')
+  },
+  getLastYearMonthlySpending(user_id) {
+      return apiCall('get', 'monthly_spendings/' + user_id + '/')
+  },
+  getAllModels(user_id) {
+    return apiCall('get', 'ml_model/' + user_id + '/')
   },
 }

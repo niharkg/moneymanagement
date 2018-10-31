@@ -9,6 +9,7 @@ import UserForgetPasswordView from '../views/main_pages/user_auth/ForgetPassword
 import DashboardView from '../views/main_pages/dashboard/Dashboard.vue'
 import SettingsView from '../views/main_pages/settings/Settings.vue'
 import TransactionsView from '../views/main_pages/transactions/Transactions.vue'
+import PredictionsView from '../views/main_pages/predictions/Predictions.vue'
 
 
 // Error Pages
@@ -69,6 +70,11 @@ export default new Router({
     name: 'transactions',
     beforeEnter: isAuthenticated,
   }, {
+    path: '/predictions',
+    component: PredictionsView,
+    name: 'predictions',
+    beforeEnter: isAuthenticated,
+  },{
     path: '/settings',
     component: SettingsView,
     name: 'settings',

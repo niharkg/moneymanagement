@@ -7,7 +7,6 @@
           2018 © MoneyManagement
         </div>
         <div class="col-6 text-right">
-          <a href="https://gullin.io/risk.html" target="_blank"> Risk Disclaimer</a>
         </div>
       </div>
     </div>
