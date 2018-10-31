@@ -11,10 +11,13 @@
       </div>
       <div class="row">
 
-        <div v-for="cat in categories" class="col-sm-3">
+        <div v-for="(cat, idx) in categories" v-if="categories" class="col-sm-3">
           <div class="card-box">
             <canvas v-bind:id="cat" style="width: 100%; height: 250px;"></canvas>
           </div>
+        </div>
+        <div v-else>
+          <p>Doing stuff</p>
         </div>
 
       </div>
@@ -215,10 +218,11 @@ export default {
         let year = d.getFullYear();
         this.$store.dispatch("getUserCategories", this.me.user_id).then(result => {
           this.categories = result;
-          let params = {}
-          params.user_id = this.me.user_id
-          params.month = month;
-          params.year = year;
+          console.log(this.categories);
+          const params = {
+            month : month,
+            year : year
+          }
           this.$store.dispatch("getCurrentMonthCategorySpendings", params).then(result => {
             let categorySpendings = result;
             let months = Object.keys(categorySpendings)

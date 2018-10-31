@@ -46,9 +46,9 @@ export default {
   getAllTransactoins() {
     return apiCall('get', 'all/')
   },
-  getCurrentMonthCategorySpending(user_id, month, year) {
-      return apiCall('get', 'get/categories/' + user_id + '/'+ month + '/' + year + '/')
-  },
+  // getCurrentMonthCategorySpending(user_id, month, year) {
+  //     return apiCall('get', 'get/categories/' + user_id + '/'+ month + '/' + year + '/')
+  // },
   getCategoryPredictions(user_id, category) {
       // Fix issue with Gas/Automotive URL
       category = category.replace("/", "_");

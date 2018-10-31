@@ -39,12 +39,6 @@
                 <i class="ti-star"></i>Predictions
               </router-link>
             </li>
-            <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
-              <router-link :to="{name:'transactions'}">
-                <i class="ti-star"></i>My Predictions
-
-              </router-link>
-            </li>
             <li class="has-submenu" :class="{active: $route.name === 'settings'}">
               <router-link :to="{name:'settings'}">
                 <i class="ti-settings"></i>Settings

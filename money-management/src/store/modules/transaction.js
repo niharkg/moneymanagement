@@ -45,13 +45,13 @@ const actions = {
       .catch((error) => Promise.reject(error))
   },
   // Get all of  a user's transactions
-  getCurrentMonthCategorySpendings({ commit },params) {
-    return transactionApi.getCurrentMonthCategorySpending(params.user_id, params.month, params.year)
-    .then((response) => {
-      return (response)
-    })
-    .catch((error) => Promise.reject(error))
-  },
+  // getCurrentMonthCategorySpendings({ commit },params) {
+  //   return transactionApi.getCurrentMonthCategorySpending(params.user_id, params.month, params.year)
+  //   .then((response) => {
+  //     return (response)
+  //   })
+  //   .catch((error) => Promise.reject(error))
+  // },
   // Get all of  a user's transactions
   getCategoryPredictions({ commit },params) {
     return transactionApi.getCategoryPredictions(params.user_id, params.category)
