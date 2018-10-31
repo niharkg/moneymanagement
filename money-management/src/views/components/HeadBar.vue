@@ -15,60 +15,91 @@
           <router-link :to="{name:'dashboard'}" class="logo">
               <!-- <img src="/static/images/gullin_logo.png" alt="" height="24" class="logo-large">
               <img src="/static/images/gullin_logo.png" alt="" height="24" class="logo-small"> -->
-               <i class="logo-large">Capital One</i>
-              <i class="logo-small">Capital One</i>
+               <img src="/static/images/capital_one.png" height="36" class="logo-large">
+              <i class="logo-small">BBB</i>
           </router-link>
         </div>
-        <!-- End Logo container-->
-        <div class="menu-extras topbar-custom" v-show="is_login">
-          <ul class="list-inline float-right mb-0">
-            <li class="menu-item list-inline-item">
-              <!-- Mobile menu toggle-->
-              <a class="navbar-toggle nav-link">
-                <div class="lines">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </a>
-              <!-- End mobile menu toggle-->
+
+        <div id="navigation-main" v-show="is_login">
+          <!-- Navigation Menu-->
+          <ul class="navigation-menu">
+            <li class="has-submenu" :class="{active: $route.name === 'dashboard'}">
+              <router-link :to="{name:'dashboard'}">
+                <i class="ti-home"></i>Dashboard
+              </router-link>
             </li>
-            <li class="list-inline-item dropdown notification-list">
-              <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="">
-                <img src="/static/images/users/default.jpg" alt="user" class="rounded-circle">
-                <span class="m-l-5"> {{me_name}}</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
-                <!-- item-->
-                <router-link :to="{name:'settings'}" class="dropdown-item notify-item">
-                  <i class="mdi mdi-account-star-variant"></i>
-                  <span>Settings</span>
-                </router-link>
-                <a href="https://www.capitalone.com/" target="_blank" class="dropdown-item notify-item">
-                  <i class="mdi mdi-comment-question-outline"></i>
-                  <span>FAQ</span>
-                </a>
-                <!-- item-->
-                <hr class="m-0">
-                <!-- item-->
-                <a href="javascript:void(0);" @click="logout()" class="dropdown-item notify-item">
-                  <i class="mdi mdi-logout"></i>
-                  <span>Logout</span>
-                </a>
-              </div>
+            <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
+            
+              <router-link :to="{name:'transactions'}">
+                <i class="ti-list-ol"></i>My Transactions
+              </router-link>
+            </li>
+            <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
+              <router-link :to="{name:'transactions'}">
+                <i class="ti-star"></i>My Predictions
+
+              </router-link>
+            </li>
+            <li class="has-submenu" :class="{active: $route.name === 'settings'}">
+              <router-link :to="{name:'settings'}">
+                <i class="ti-settings"></i>Settings
+              </router-link>
             </li>
           </ul>
+
+          <div name="right-dropdown">
+          <!-- Begin rightside drop down -->
+            <ul class="list-inline float-right mb-0">
+              <li class="menu-item list-inline-item">
+                <!-- Mobile menu toggle-->
+                <a class="navbar-toggle nav-link">
+                  <div class="lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </a>
+                <!-- End mobile menu toggle-->
+              </li>
+              <li class="list-inline-item dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="">
+                  <img src="/static/images/users/default.jpg" alt="user" class="rounded-circle">
+                  <span class="m-l-5"> {{me_name}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                  <!-- item-->
+                  <router-link :to="{name:'settings'}" class="dropdown-item notify-item">
+                    <i class="mdi mdi-account-star-variant"></i>
+                    <span>Settings</span>
+                  </router-link>
+                  <a href="https://www.capitalone.com/" target="_blank" class="dropdown-item notify-item">
+                    <i class="mdi mdi-comment-question-outline"></i>
+                    <span>FAQ</span>
+                  </a>
+                  <!-- item-->
+                  <hr class="m-0">
+                  <!-- item-->
+                  <a href="javascript:void(0);" @click="logout()" class="dropdown-item notify-item">
+                    <i class="mdi mdi-logout"></i>
+                    <span>Logout</span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
+          <!-- End navigation menu -->
+        <!-- End Logo container-->
         <div class="menu-extras topbar-custom" v-if="!is_login">
           <ul class="list-inline float-right mb-0">
             <li class="list-inline-item dropdown notification-list">
               <router-link class="nav-link nav-user" :to="{name:'user_login'}" role="button">
-                <span class="text-white">Login</span>
+                <span class="text-bla">Login</span>
               </router-link>
             </li>
             <li class="list-inline-item dropdown notification-list">
               <router-link class="nav-link nav-user" :to="{name:'user_signup'}" role="button">
-                <span class="text-white">Sign Up</span>
+                <span class="text-black">Sign Up</span>
               </router-link>
             </li>
           </ul>
@@ -79,39 +110,6 @@
       <!-- end container -->
     </div>
     <!-- end topbar-main -->
-    <div class="navbar-custom" v-if="is_login">
-      <div class="container-fluid">
-        <div id="navigation">
-          <!-- Navigation Menu-->
-          <ul class="navigation-menu">
-            <li class="has-submenu" :class="{active: $route.name === 'dashboard'}">
-              <router-link :to="{name:'dashboard'}">
-                <i class="ti-home"></i>Dashboard
-              </router-link>
-            </li>
-            <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
-              <router-link :to="{name:'transactions'}">
-                <i class="ti-list-ol"></i>My Transactoins
-              </router-link>
-            </li>
-            <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
-              <router-link :to="{name:'transactions'}">
-                <i class="ti-star"></i>My Predictions
-              </router-link>
-            </li>
-            <li class="has-submenu" :class="{active: $route.name === 'settings'}">
-              <router-link :to="{name:'settings'}">
-                <i class="ti-settings"></i>Settings
-              </router-link>
-            </li>
-          </ul>
-          <!-- End navigation menu -->
-        </div>
-        <!-- end #navigation -->
-      </div>
-      <!-- end container -->
-    </div>
-    <!-- end navbar-custom -->
   </header>
   <!-- End Navigation Bar-->
 </template>
