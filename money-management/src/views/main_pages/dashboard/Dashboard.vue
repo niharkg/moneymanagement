@@ -15,8 +15,9 @@
       <div class="row">
         <div class="col-sm-12">
           <div id="spending_alert" >
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             {{ this.alertText }}
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
           </div>
         </div>
       </div>
@@ -318,7 +319,7 @@ export default {
   beforeMount(){
     var d = new Date();
     // TODO: Fix month (User data not in October yet)
-    this.getCurrentMonthCategorySpendings(d.getMonth() - 1, d.getFullYear())
+    this.getCurrentMonthCategorySpendings(d.getMonth(), d.getFullYear())
     this.getRecentTransactions();
     this.getLastYearMonthlySpending();
   },

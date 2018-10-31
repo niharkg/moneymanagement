@@ -2848,9 +2848,9 @@ Modal
 }
 
 .alert-info {
-  background-color: #d0f7fd !important;
+  /* background-color: #d0f7fd !important;
   border-color: #6ee5f9 !important;
-  color: #3ddcf7;
+  color: #3ddcf7; */
 }
 
 .alert-info .alert-link {

@@ -61,6 +61,13 @@ const actions = {
     })
     .catch((error) => Promise.reject(error))
   },
+  getAllModels({ commit }, user_id) {
+    return transactionApi.getAllModels(user_id)
+    .then((response) => {
+      return (response)
+    })
+    .catch((error) => Promise.reject(error))
+  },
 
 }
 
