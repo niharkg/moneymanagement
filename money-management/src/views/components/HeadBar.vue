@@ -32,17 +32,11 @@
             
               <router-link :to="{name:'transactions'}">
                 <i class="ti-list-ol"></i>My Transactions
-\              </router-link>
+              </router-link>
             </li>
             <li class="has-submenu" :class="{active: $route.name === 'predictions'}">
               <router-link :to="{name:'predictions'}">
                 <i class="ti-star"></i>Predictions
-              </router-link>
-            </li>
-            <li class="has-submenu" :class="{active: $route.name === 'transactions'}">
-              <router-link :to="{name:'transactions'}">
-                <i class="ti-star"></i>My Predictions
-
               </router-link>
             </li>
             <li class="has-submenu" :class="{active: $route.name === 'settings'}">
