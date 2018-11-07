@@ -284,20 +284,21 @@ export default {
       if (month_spending == null)
         month_spending = 0
       month_spending = month_spending.toFixed(2)
+      let money_diff = (Math.abs((month_spending - avg).toFixed(2))).toFixed(2)
       let percent_diff = Math.abs(((avg - month_spending) / avg) * 100).toFixed(1)
       if (month_spending >= avg + avg*threshold){
         this.alertType = "danger"
-        this.alertText = "Uh-oh, you're spending more than usual this month. Your spending is $" + month_spending + ". This is " + percent_diff + "% higher than usual."
+        this.alertText = "Uh-oh, you're spending more than usual this month. Your spending is $" + month_spending + ". This is $" + money_diff + " higher than usual."
         ctx.className = "alert alert-danger alert-dismissable"
       }
       else if (month_spending <= avg - avg*threshold) {
         this.alertType = "success"
-        this.alertText = "You're doing great this month! Your spending is $" + month_spending + ". This is " + percent_diff + "% lower than usual."
+        this.alertText = "You're doing great this month! Your spending is $" + month_spending + ". This is $" + money_diff + " lower than usual."
         ctx.className = "alert alert-success alert-dismissable"
       }
       else {
         this.alertType = "info"
-        this.alertText = "Your spending is right on track this month! Your spending is $" + month_spending +". This is " + percent_diff + "% different than usual."
+        this.alertText = "Your spending is right on track this month! Your spending is $" + month_spending +". This is $" + money_diff + " different than usual."
         ctx.className = "alert alert-info alert-dismissable"
       }
     },
