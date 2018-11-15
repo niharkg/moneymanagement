@@ -88,23 +88,23 @@ export default {
         url: "https://www.nerdwallet.com/blog/finance/7-ways-to-lower-your-cable-bill/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Cut Down On Your Internet Bill",
+        text: "Find out how to get the same high-speed Internet", 
+        url: "https://www.nerdwallet.com/blog/finance/bills/lower-internet-bills/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Sharing Memberships",
+        text: "Share your Netflix, Amazon, Hulu, etc. accounts with your friends to save money. ", 
+        url: "https://www.marketwatch.com/story/how-to-save-money-if-you-sign-up-for-way-too-many-subscription-services-2017-11-20"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "Look Out For Discounts",
+        text: "Discounts and coupons are the fastest ways to spend less. ", 
+        url: "https://www.nerdwallet.com/blog/how-to-save-money/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Essential Tips to Buying Used",
+        text: "Learn how to buy used goods without getting scammed. ", 
+        url: "https://lifehacker.com/the-essential-tips-for-buying-used-stuff-without-getti-1574256371"
         }
     ],
     merchandise_urls: [
