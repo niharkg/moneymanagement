@@ -201,40 +201,40 @@ export default {
         text: "How getting a better credit score can help you save on your insurance. ", 
         url: "https://www.bankrate.com/finance/debt/7-simple-ways-improve-credit-score-1.aspx"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "Learn How to Secure Your Car",
+        text: "Protect your car from theft and damage is the best way to reducing the amount you pay. ", 
+        url: "https://www.iii.org/article/how-to-prevent-auto-theft-and-carjacking"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Get Group Insurance",
+        text: "Getting group insurance may be the easiest way to get discounts. ", 
+        url: "https://www.investopedia.com/terms/g/group-health-insurance-plan.asp"
         }
     ],
     gas_automotive_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Use a Gas App",
+        text: "Compare prices by using a gas app or website. ", 
+        url: "https://gasprices.aaa.com/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Top-Tier Gasoline Can Save on Your Mileage",
+        text: "Good quality gasoline is better for your car and your wallet. ", 
+        url: "https://www.toptiergas.com/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Plan How to Drive Less",
+        text: "As gas prices go up, the best way to save is to cut down on driving. ", 
+        url: "https://www.moneycrashers.com/why-gas-prices-rising/"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "Buy Gas Early or Later in the Day",
+        text: "Gas is cooler earlier or later in the day, and as such, more dense. ", 
+        url: "https://www.moneycrashers.com/how-to-save-money-on-gas/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Get Discounted Gas Gift Cards",
+        text: "Gift cards are very easy to get and can save you a lot on gas. ", 
+        url: "https://www.giftcardgranny.com/"
         }
     ]
 
