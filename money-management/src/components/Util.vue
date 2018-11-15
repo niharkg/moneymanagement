@@ -135,28 +135,28 @@ export default {
     ],
     travel_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Find Cheap Flights Now",
+        text: "Get cheap flights to your dream destination. ", 
+        url: "https://www.ytravelblog.com/find-cheap-flights-to-anywhere-in-the-world/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Look For Student Discounts",
+        text: "Student discounts can help you get to that spring break trip you've always wanted. ", 
+        url: "http://www.statravel.com/?utm_source=affiliate&utm_medium=cj&utm_campaign=10455010&wt.mc_id=cj_worldslargest_banner_468x60&wt.tsrc=Affiliate&event=93c3434be8e911e882bb00d80a24060c&from_US=true"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Get an Airbnb Instead of a Hotel",
+        text: "Airbnb's can often be cheaper than a standard hotel. ", 
+        url: "https://www.airbnb.com/"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "Learn How to Get Flyer Points",
+        text: "Get discounts the more you fly. ", 
+        url: "https://www.flyertalk.com/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Find Out How to Make International Calls for Free",
+        text: "Don't waste money paying massive amouunts for a two-minute call. ", 
+        url: "https://www.vonage.com/personal/features/extensions"
         }
     ],
     grocery_urls: [
@@ -187,19 +187,19 @@ export default {
     ],
     insurance_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Drive a Car That's Cheap to Insure",
+        text: "Some cars are much easier to insure than others. ", 
+        url: "https://www.nerdwallet.com/insurance/compare-car-insurance-rates"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "How Increasing Your Deductible Can Help Save",
+        text: "You can save money by raising the deductible an insurance company pays. ", 
+        url: "https://www.nerdwallet.com/blog/how-to-save-money/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Learn How to Get a Better Credit Score",
+        text: "How getting a better credit score can help you save on your insurance. ", 
+        url: "https://www.bankrate.com/finance/debt/7-simple-ways-improve-credit-score-1.aspx"
         },{
         header: "",
         text: "", 
