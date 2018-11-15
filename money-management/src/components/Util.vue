@@ -161,28 +161,28 @@ export default {
     ],
     grocery_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Buy Generic Brands",
+        text: "Save tons of money on your groceries by noy buying brand names. ", 
+        url: "https://www.moneytalksnews.com/7-things-you-should-always-buy-generic/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Basics of Buying in Bulk",
+        text: "Want to learn how to cut spending on food quickly? ", 
+        url: "https://www.wisebread.com/bulk-buying-basics-what-to-buy-how-to-store-and-money-saving-tips"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "A Beginner's Guide to Printable Savings",
+        text: "How you can save by using coupons. ", 
+        url: "https://www.moneytalksnews.com/internet-coupons-101-a-beginners-guide-to-printable-savings/"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "How to Price Match on Groceries",
+        text: "Make sure you're paying the cheapest price for your groceries. ", 
+        url: "https://www.joinmoolah.com/blog/price-match-grocery-stores/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Buying Fruits and Vegetables in Season",
+        text: "Find out how to spend less on fruits and vegetables by buying in season. ", 
+        url: "https://www.fruitsandveggiesmorematters.org/what-fruits-and-vegetables-are-in-season"
         }
     ],
     insurance_urls: [
