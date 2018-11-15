@@ -31,61 +31,61 @@ export default {
     ],
     dining_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "The Quickest Way to Save Money on Dining",
+        text: "Save money by eating out less. ", 
+        url: "https://www.forbes.com/sites/alexandratalty/2016/10/17/millennials-spend-44-percent-of-food-dollars-on-eating-out-says-food-institute/#7569b6ba3ff6"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Savae Money by Picking Up Your Food",
+        text: "Pick up your food when you order takeout instead of paying a delivery fee. ", 
+        url: "https://thefinancialdiet.com/5-ways-improved-life-money-ive-spent-takeout-2016/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Use Groupon to Find Great Deals",
+        text: "Using coupons can save a lot of money whenever you eat out. ", 
+        url: "https://www.groupon.com/local/restaurants"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "How to Effectively Split Meals",
+        text: "Find out how splitting meals can save you and your friends valuable money. ", 
+        url: "https://www.moneycrashers.com/save-money-eating-out-restaurants/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Learn How to Make Cheap Meals at Home",
+        text: "Cooking for yourself is one of the easiest ways to save big. ", 
+        url: "https://www.thesimpledollar.com/20-favorite-dirt-cheap-meals/"
         }
     ],
     healthcare_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Find a Better Premium for You",
+        text: "Learn how you can get the best deals on health insurance. ", 
+        url: "https://www.fool.com/knowledge-center/kc-what-is-a-health-insurance-premium.aspx"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Lower Your Prescription Costs",
+        text: "Get better deals on your copay. ", 
+        url: "https://www.fool.com/knowledge-center/what-is-a-health-insurance-copayment.aspx"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Open Up a Health Savings Account",
+        text: "How a dedicated account for health insurance can help you save. ", 
+        url: "https://www.fool.com/retirement/2017/11/06/2018-hsa-changes-the-latest-on-health-savings-acco.aspx"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "Health Benefits From Your Job",
+        text: "See what essential health benefits you are offered. ", 
+        url: "https://www.healthcare.gov/glossary/essential-health-benefits/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Check All Your Options Before Buying",
+        text: "You can get discounts without you being aware of it. ", 
+        url: "https://www.thebalance.com/domestic-partner-insurance-101-2645680"
         }
     ],
     entertainment_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "How to Lower Your Cable Bill",
+        text: "Learn how to save more without cutting out the things you enjoy. ", 
+        url: "https://www.nerdwallet.com/blog/finance/7-ways-to-lower-your-cable-bill/"
         },
         {
         header: "",
