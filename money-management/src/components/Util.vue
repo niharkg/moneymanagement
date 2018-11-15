@@ -109,28 +109,28 @@ export default {
     ],
     merchandise_urls: [
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "How to Save on Shipping Costs",
+        text: "Getting the best deals on shipping ", 
+        url: "https://www.entrepreneur.com/article/219912"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "Take Advantage of Digital Prommo",
+        text: "Going digital can save you a lot of money. ", 
+        url: "https://www.sonicbids.com/electronic-press-kit/"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "The Ultimate Guide to Buying in Bulk",
+        text: "You can save tons by buying in bulk. ", 
+        url: "https://www.thesimpledollar.com/buying-in-bulk/"
         },{
-        header: "",
-        text: "", 
-        url: ""
+        header: "Get the Best Coupons for You",
+        text: "Easy coupons for the best merchandise savings. ", 
+        url: "http://www.today.com/money/extreme-couponing-how-get-1-100-merchandise-40-2D80554992"
         },
         {
-        header: "",
-        text: "", 
-        url: ""
+        header: "How You Can Save at Concerts",
+        text: "Easy tips to save at your favorite concerts. ", 
+        url: "https://money.usnews.com/money/blogs/my-money/2014/05/28/6-tricks-to-save-money-at-summer-concerts"
         }
     ],
     travel_urls: [
