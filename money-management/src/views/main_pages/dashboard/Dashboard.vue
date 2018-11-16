@@ -94,34 +94,10 @@
           <div class="card-box" style="height:400px;">
             <h4 class="text-dark header-title">Tips</h4>
             <div class="inbox-widget">
-              <a href="https://creditwise.capitalone.com/home" target="_blank">
+              <a v-for="tip in tips" :href="tip.url" target = "_blank">
                 <div class="inbox-item">
-                  <p class="inbox-item-author">CreditWise</p>
-                  <p class="inbox-item-text">Monitor your credit. For free. <span class="pull-right"></span></p>
-                </div>
-              </a>
-              <a href="https://www.capitalone.com/credit-cards/savor-dining-rewards/" target="_blank">
-                <div class="inbox-item">
-                  <p class="inbox-item-author">Savor® Cash Back Rewards</p>
-                  <p class="inbox-item-text">Earn unlimited 4% cash back on dining and entertainment. <span class="pull-right"></span></p>
-                </div>
-              </a>
-              <a href="https://creditwise.capitalone.com/home" target="_blank">
-                <div class="inbox-item">
-                  <p class="inbox-item-author">Expect more with 360 Money Market®</p>
-                  <p class="inbox-item-text">Grab one of the nation's top savings rates with this fee-free, online and mobile account. <span class="pull-right"></span></p>
-                </div>
-              </a>
-              <a href="https://creditwise.capitalone.com/home" target="_blank">
-                <div class="inbox-item">
-                  <p class="inbox-item-author">See If You're Pre-Qualified</p>
-                  <p class="inbox-item-text">Are you eligible for pre-qualified credit card offers? There's no impact to your credit score to find out now.. <span class="pull-right"></span></p>
-                </div>
-              </a>
-              <a href="https://creditwise.capitalone.com/home" target="_blank">
-                <div class="inbox-item">
-                  <p class="inbox-item-author">Auto Navigator</p>
-                  <p class="inbox-item-text">Find your perfect car, and get pre-qualified for financing—all with no impact to your credit score. <span class="pull-right"></span></p>
+                  <p class="inbox-item-author">{{tip.header}}</p>
+                  <p class="inbox-item-text">{{tip.text}} <span class="pull-right"></span></p>
                 </div>
               </a>
             </div>
@@ -138,6 +114,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Utils from '../../../components/Util.vue'
 // import Chart from 'chart.js'
 
 export default {
@@ -150,6 +127,7 @@ export default {
       categorySpendings: [],
       alertType: "",
       alertText: "",
+      tips: [],
     };
   },
   computed: {
@@ -184,7 +162,6 @@ export default {
       let params = {}
       params.user_id = this.me.user_id
       params.amount = 5
-      console.log(params)
       this.$store.dispatch("getRecentTransactions", params).then(result => {
         this.transactions = result
       });
@@ -209,12 +186,12 @@ export default {
             );
           }
           this.categorySpendings = spendings;
+          this.getOverspendingCategories(month);
           this.createDonutChart("category-chart");
         });
     },
     // Create the donut category chart
     createDonutChart(chartId) {
-      console.log(this.categorySpendings);
       const ctx = document.getElementById(chartId);
       const myChart = new Chart(ctx, {
         type: "doughnut",
@@ -333,6 +310,57 @@ export default {
         let months = result[0]
         let spendings = result[1]
         this.createBarChart("monthly-chart", months, spendings)
+      });
+    },
+    // Get a recommended spending tip for a user
+    getTip(category, index){
+      if(category == "Dining"){
+        return Utils.dining_urls[index];
+      }
+      if(category == "Merchandise"){
+        return Utils.merchandise_urls[index];
+      }
+      if(category == "Gas/Automotive"){
+        return Utils.gas_automotive_urls[index];
+      }
+      if(category == "Insurance"){
+        return Utils.insurance_urls[index];
+      }
+      if(category == "Healthcare"){
+        return Utils.healthcare_urls[index];
+      }
+      if(category == "Entertainment"){
+        return Utils.entertainment_urls[index];
+      }
+      if(category == "Grocery"){
+        return Utils.grocery_urls[index];
+      }
+      if(category == "Travel"){
+        return Utils.travel_urls[index];
+      }
+      return Utils.capital_one_urls[index];
+    },
+    // Find categories overspent in
+    getOverspendingCategories(month) {
+      let threshold = 0.03;
+      let index = 0;
+      let spending = 0;
+      let pred = 0;
+      let overspent_categories = [];
+      let number_tips = 5;
+      this.$store.dispatch("getAllModels", this.me.user_id).then(result => {
+        let all_models = result;
+        for(let model of all_models) {
+          index = this.categories.indexOf(model.category);
+          pred = model.slope * month + model.intercept;
+          if(((this.categorySpendings[index] - pred)/this.categorySpendings[index]) >= threshold) {
+            overspent_categories.push(model.category);
+          }
+        }
+        for(let i = 0; i < number_tips; i++) {
+          let tip = this.getTip(overspent_categories[i % overspent_categories.length], i);
+          this.tips.push(this.getTip(overspent_categories[i % overspent_categories.length], i));
+        }
       });
     }
   },
