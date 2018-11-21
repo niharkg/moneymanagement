@@ -12,12 +12,14 @@
       <div class="row">
 
         <!-- Prediction Donut Charts -->
-        <div v-for="(cat) in categories" class="col-sm-3">          
-          <div class="card-box" v-bind:class="cat">
-            <div v-bind:id="cat + '_percent'" style="width: 100%; position: absolute; top: 55%; left: 0; margin-top: -20px; line-height:19px; text-align: center; z-index: 999999999999999; font-size: 24px; ">
+        <div v-for="(cat) in categories" class="col-sm-3">
+          <router-link :to="{name:'transactions'}" style="color: #505050">
+            <div class="card-box" v-bind:class="cat">
+              <div v-bind:id="cat + '_percent'" style="width: 100%; position: absolute; top: 55%; left: 0; margin-top: -20px; line-height:19px; text-align: center; z-index: 999999999999999; font-size: 24px; ">
+              </div>
+              <canvas v-bind:id="cat" style="width: 100%; height: 250px;"></canvas>
             </div>
-            <canvas v-bind:id="cat" style="width: 100%; height: 250px;"></canvas>
-          </div>
+          </router-link>
         </div>
         <!-- End Prediction Donut Charts -->
 
@@ -26,7 +28,7 @@
     <!-- end container -->
   </div>
 </template>
-
++
 <script>
 import { mapGetters } from "vuex";
 // import Chart from 'chart.js'
