@@ -11,14 +11,15 @@
       </div>
       <div class="row">
 
-        <div v-for="(cat, idx) in categories" v-if="categories" class="col-sm-3">
-          <div class="card-box">
+        <!-- Prediction Donut Charts -->
+        <div v-for="(cat) in categories" class="col-sm-3">          
+          <div class="card-box" v-bind:class="cat">
+            <div v-bind:id="cat + '_percent'" style="width: 100%; position: absolute; top: 55%; left: 0; margin-top: -20px; line-height:19px; text-align: center; z-index: 999999999999999; font-size: 24px; ">
+            </div>
             <canvas v-bind:id="cat" style="width: 100%; height: 250px;"></canvas>
           </div>
         </div>
-        <div v-else>
-          <p>Doing stuff</p>
-        </div>
+        <!-- End Prediction Donut Charts -->
 
       </div>
     </div>
@@ -104,6 +105,8 @@ export default {
       let ctx = document.getElementById(category);
       let percent = ((current_spending/predicted_spending) * 100).toFixed(1);
       let color = this.getDonutColor(percent);
+      let percent_div = document.getElementById(category+'_percent');
+      percent_div.innerHTML = percent + "%"
       let diff = (current_spending-predicted_spending).toFixed(2)
       let percent_nonspent = (100-percent).toFixed(1)
       if (percent_nonspent < 0) {
@@ -124,12 +127,16 @@ export default {
           title: {
             display: true,
             text: category + ":  $" + current_spending.toFixed(2) + "/$" + predicted_spending.toFixed(2),
-            // text: category + " ($" + diff + ")",
             fontSize: 16,
           },
           legend: {
             display: false,
-          }
+          },
+          animation:{
+            onComplete : function(){
+              // Draw percentatge here
+            }
+          },
         }
       });
     },
