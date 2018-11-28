@@ -114,6 +114,13 @@ export default {
       if (percent_nonspent < 0) {
         percent_nonspent = 0;
       }
+      let text_str = ""
+      if (diff >= 0) {
+        text_str = ": +$" + Math.abs(diff)
+      }
+      else {
+        text_str = ": -$" + Math.abs(diff)
+      }
       const myChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -128,7 +135,7 @@ export default {
         options: {
           title: {
             display: true,
-            text: category + ":  $" + current_spending.toFixed(2) + "/$" + predicted_spending.toFixed(2),
+            text: category + text_str,
             fontSize: 16,
           },
           legend: {
