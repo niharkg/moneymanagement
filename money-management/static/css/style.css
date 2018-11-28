@@ -22,6 +22,7 @@ File: Main Css
   font-weight: 600;
 }
 
+
 #topnav {
   position: fixed;
   right: 0;
@@ -862,6 +863,47 @@ a:hover, a:active, a:focus {
   margin-bottom: 20px;
   background-color: #ffffff;
 }
+
+.card-box.Insurance:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.card-box.Gas\/Automotive:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.card-box.Healthcare:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.card-box.Merchandise:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.card-box.Grocery:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.card-box.Dining:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.card-box.Travel:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.card-box.Entertainment:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
 
 .header-title {
   text-transform: uppercase;

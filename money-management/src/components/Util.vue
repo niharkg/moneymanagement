@@ -36,7 +36,7 @@ export default {
         url: "https://www.forbes.com/sites/alexandratalty/2016/10/17/millennials-spend-44-percent-of-food-dollars-on-eating-out-says-food-institute/#7569b6ba3ff6"
         },
         {
-        header: "Savae Money by Picking Up Your Food",
+        header: "Save Money by Picking Up Your Food",
         text: "Pick up your food when you order takeout instead of paying a delivery fee. ", 
         url: "https://thefinancialdiet.com/5-ways-improved-life-money-ive-spent-takeout-2016/"
         },
