@@ -217,7 +217,6 @@ export default {
     this.$store.dispatch("getAllModels", this.me.user_id).then(result => {
       let all_models = result;
       console.log(all_models);
-      // TODO: Test this later
       if(result.length == 0){
         this.trainAllModels();
       }
