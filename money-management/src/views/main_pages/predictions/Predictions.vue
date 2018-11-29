@@ -13,7 +13,7 @@
 
         <!-- Prediction Donut Charts -->
         <div v-for="(cat) in categories" class="col-sm-3">
-          <router-link :to="{name:'transactions'}" style="color: #505050">
+          <router-link :to="{name:'transactions', query:{category: cat}}" style="color: #505050">
             <div class="card-box" v-bind:class="cat">
               <div v-bind:id="cat + '_percent'" style="width: 100%; position: absolute; top: 55%; left: 0; margin-top: -20px; line-height:19px; text-align: center; z-index: 999999999999999; font-size: 24px; ">
               </div>

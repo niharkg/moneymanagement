@@ -1,4 +1,4 @@
-export const API_ROOT = (process.env.NODE_ENV === 'production') ? 'https://api.gullin.io' : 'http://localhost:8000'
+export const API_ROOT = (process.env.NODE_ENV === 'production') ? 'https://api.capitalonecapstone.com' : 'http://localhost:8000'
 
 export const VeeValidateConfig = {
   errorBagName: 'errors',
